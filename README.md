@@ -1,93 +1,333 @@
-# gitlab-mirror-repo
+# GitLab Mirror Repository
 
+## Introduction
 
+This project demonstrates how to configure **GitLab Repository Mirroring** to automatically synchronize code from a GitLab repository to a GitHub repository.
 
-## Getting started
+Repository mirroring is useful when GitLab is used as the primary source control platform while maintaining a backup or public copy of the repository on GitHub. Any changes pushed to GitLab are automatically mirrored to GitHub.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+---
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Project Objective
 
-## Add your files
+To establish a one-way repository mirroring setup from GitLab to GitHub and verify that all code changes pushed to GitLab are automatically reflected in GitHub.
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+---
 
+## Prerequisites
+
+Before starting, ensure you have:
+
+- Git installed on your local machine
+- GitLab account
+- GitHub account
+- Visual Studio Code (VS Code)
+- Internet connection
+
+---
+
+## Step 1: Create a Repository in GitLab
+
+1. Log in to GitLab.
+2. Click **New Project**.
+3. Select **Create Blank Project**.
+4. Enter the repository name.
+5. Click **Create Project**.
+
+Example:
+
+```text
+gitlab-mirror-repo
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/dhairyashil09/gitlab-mirror-repo.git
-git branch -M main
-git push -uf origin main
+
+---
+
+## Step 2: Create a Repository in GitHub
+
+1. Log in to GitHub.
+2. Click **New Repository**.
+3. Enter the repository name.
+4. Click **Create Repository**.
+
+Example:
+
+```text
+gitlab-mirror-repo
 ```
 
-## Integrate with your tools
+---
 
-* [Set up project integrations](https://gitlab.com/dhairyashil09/gitlab-mirror-repo/-/settings/integrations)
+## Step 3: Configure Repository Mirroring in GitLab
 
-## Collaborate with your team
+1. Open your GitLab repository.
+2. Navigate to:
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+```text
+Settings → Repository
+```
 
-## Test and Deploy
+3. Scroll down to:
 
-Use the built-in continuous integration in GitLab.
+```text
+Mirroring Repositories
+```
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+4. Click:
 
-***
+```text
+Add New
+```
 
-# Editing this README
+5. Copy the HTTPS URL of your GitHub repository.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Example:
 
-## Suggestions for a good README
+```text
+https://github.com/username/gitlab-mirror-repo.git
+```
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+6. Paste the URL into the Mirror Repository URL field.
 
-## Name
-Choose a self-explaining name for your project.
+---
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Step 4: Generate a GitHub Personal Access Token
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Since GitHub no longer supports password authentication for Git operations, a Personal Access Token (PAT) is required.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Navigate to:
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+```text
+GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (Classic)
+```
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Click:
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+```text
+Generate New Token (Classic)
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Verify your GitHub account if prompted.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+---
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Step 5: Configure Token Permissions
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+1. Enter a token note.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Example:
 
-## License
-For open source projects, say how it is licensed.
+```text
+GitLab Mirroring Token
+```
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+2. Set expiration:
+
+```text
+No Expiration
+```
+
+3. Select the following scope:
+
+```text
+repo
+```
+
+4. Scroll down and click:
+
+```text
+Generate Token
+```
+
+---
+
+## Step 6: Configure Authentication in GitLab
+
+1. Copy the generated GitHub Personal Access Token.
+2. Return to the GitLab Mirroring Repository settings.
+3. Enter the following credentials:
+
+### Username
+
+```text
+Your GitHub Username
+```
+
+### Password
+
+```text
+Your GitHub Personal Access Token
+```
+
+4. Save the configuration.
+
+The mirror repository entry should now appear in GitLab.
+
+---
+
+## Step 7: Clone the GitLab Repository Locally
+
+1. Create a workspace folder.
+
+Example:
+
+```text
+C:\Workspace
+```
+
+2. Right-click inside the folder.
+3. Select:
+
+```text
+Git Bash Here
+```
+
+4. Clone the GitLab repository:
+
+```bash
+git clone https://gitlab.com/username/gitlab-mirror-repo.git
+```
+
+5. Navigate into the repository:
+
+```bash
+cd gitlab-mirror-repo
+```
+
+6. Open Visual Studio Code:
+
+```bash
+code .
+```
+
+---
+
+## Step 8: Create a Sample File
+
+Create a file named:
+
+```text
+gitlab.html
+```
+
+Add the following content:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitLab Mirror Demo</title>
+</head>
+<body>
+    <h1>GitLab Repository Mirroring Successful</h1>
+</body>
+</html>
+```
+
+Open the VS Code terminal.
+
+---
+
+## Step 9: Commit and Push Changes
+
+### Add Files to Staging Area
+
+```bash
+git add .
+```
+
+### Commit Changes
+
+```bash
+git commit -m "added gitlab.html"
+```
+
+### Push Changes to GitLab
+
+```bash
+git push -u origin main
+```
+
+---
+
+## Step 10: Verify Repository Mirroring
+
+1. Open the GitLab repository.
+2. Verify that the file has been successfully pushed.
+3. Open the GitHub repository.
+4. Confirm that the same file appears automatically.
+
+### Expected Flow
+
+```text
+Local Machine
+      │
+      ▼
+GitLab Repository
+      │
+      ▼
+Repository Mirroring
+      │
+      ▼
+GitHub Repository
+```
+
+The file pushed to GitLab should automatically appear in GitHub.
+
+---
+
+## Git Commands Used
+
+```bash
+git clone https://gitlab.com/username/gitlab-mirror-repo.git
+
+git add .
+
+git commit -m "added gitlab.html"
+
+git push -u origin main
+```
+
+---
+
+## Project Architecture
+
+```text
++----------------+
+| Local Machine  |
++----------------+
+        |
+        ▼
++----------------+
+| GitLab Repo    |
++----------------+
+        |
+        ▼
++----------------+
+| Mirroring      |
++----------------+
+        |
+        ▼
++----------------+
+| GitHub Repo    |
++----------------+
+```
+
+---
+
+## Outcome
+
+Successfully configured GitLab Repository Mirroring to automatically synchronize code changes from GitLab to GitHub using GitHub Personal Access Token authentication.
+
+### Benefits
+
+- Automatic synchronization between GitLab and GitHub
+- Repository backup and redundancy
+- Public code sharing through GitHub
+- Centralized development workflow
+- Improved source code management
+
+---
+
+## Author
+
+**Dhairyashil Suryawanshi**
