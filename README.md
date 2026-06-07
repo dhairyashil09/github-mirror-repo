@@ -32,13 +32,14 @@ Before starting, ensure you have:
 2. Click **New Project**.
 3. Select **Create Blank Project**.
 4. Enter the repository name.
-5. Click **Create Project**.
+5. add Readme.md file and Click **Create Project**.
 
 Example:
 
 ```text
 gitlab-mirror-repo
 ```
+![](img/1.png)
 
 ---
 
@@ -47,14 +48,14 @@ gitlab-mirror-repo
 1. Log in to GitHub.
 2. Click **New Repository**.
 3. Enter the repository name.
-4. Click **Create Repository**.
+4. add Readme.md file and Click **Create Repository**.
 
 Example:
 
 ```text
 gitlab-mirror-repo
 ```
-
+![](img/2.png)
 ---
 
 ## Step 3: Configure Repository Mirroring in GitLab
@@ -88,11 +89,18 @@ https://github.com/username/gitlab-mirror-repo.git
 
 6. Paste the URL into the Mirror Repository URL field.
 
+![](img/3.png)
+
 ---
 
 ## Step 4: Generate a GitHub Personal Access Token
 
 Since GitHub no longer supports password authentication for Git operations, a Personal Access Token (PAT) is required.
+
+
+![](img/4.png)
+
+
 
 Navigate to:
 
@@ -108,6 +116,11 @@ Generate New Token (Classic)
 
 Verify your GitHub account if prompted.
 
+![](img/5.png)
+![](img/6.png)
+![](img/7.png)
+![](img/8.png)
+![](img/9.png)
 ---
 
 ## Step 5: Configure Token Permissions
@@ -138,6 +151,10 @@ repo
 Generate Token
 ```
 
+![](img/10.png)
+![](img/11.png)
+
+
 ---
 
 ## Step 6: Configure Authentication in GitLab
@@ -161,6 +178,10 @@ Your GitHub Personal Access Token
 4. Save the configuration.
 
 The mirror repository entry should now appear in GitLab.
+
+![](img/12.png)
+![](img/13.png)
+![](img/14.png)
 
 ---
 
@@ -193,11 +214,14 @@ git clone https://gitlab.com/username/gitlab-mirror-repo.git
 cd gitlab-mirror-repo
 ```
 
-6. Open Visual Studio Code:
+6. Open Visual Studio Code from git bash:
 
 ```bash
-code .
+code . ; exit
 ```
+
+![](img/15.png)
+![](img/16.png)
 
 ---
 
@@ -223,7 +247,7 @@ Add the following content:
 </html>
 ```
 
-Open the VS Code terminal.
+Open the VS Code bash terminal.
 
 ---
 
@@ -246,7 +270,7 @@ git commit -m "added gitlab.html"
 ```bash
 git push -u origin main
 ```
-
+![](img/17.png)
 ---
 
 ## Step 10: Verify Repository Mirroring
@@ -255,6 +279,9 @@ git push -u origin main
 2. Verify that the file has been successfully pushed.
 3. Open the GitHub repository.
 4. Confirm that the same file appears automatically.
+
+![](img/18.png)
+![](img/19.png)
 
 ### Expected Flow
 
